@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: task-manager-client
+    env: static
+    static_publish_path: ./client/dist
+    buildCommand: cd client && npm install && npm run build
+    branch: master
+
+  - type: web
+    name: task-manager-server
+    env: node
+    plan: free
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    branch: master
